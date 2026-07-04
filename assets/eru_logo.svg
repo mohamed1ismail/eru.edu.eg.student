@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 350 90" width="100%" height="100%">
+  <!-- ERU Star Emblem -->
+  <g transform="translate(10, 5)">
+    <!-- Red Starburst/Sun -->
+    <path d="M 30,5 L 34,22 L 48,12 L 38,26 L 55,30 L 38,34 L 48,48 L 34,38 L 30,55 L 26,38 L 12,48 L 22,34 L 5,30 L 22,26 L 12,12 L 26,22 Z" fill="#b71c1c" />
+    <!-- Center white circle/crescent details -->
+    <circle cx="30" cy="30" r="7" fill="#ffffff" />
+    <circle cx="30" cy="30" r="5" fill="#b71c1c" />
+    
+    <!-- Underneath ERU text -->
+    <text x="30" y="75" font-family="'Arial Black', sans-serif" font-size="18" font-weight="900" fill="#b71c1c" text-anchor="middle">ERU</text>
+  </g>
+
+  <!-- Divider Line (Implicit spacing in layout, we do it in text side) -->
+  
+  <!-- University Name Texts -->
+  <g transform="translate(85, 10)">
+    <!-- English Name -->
+    <text x="0" y="32" font-family="'Times New Roman', Times, serif" font-size="21" font-weight="bold" fill="#37474f" letter-spacing="0.5">Egyptian Russian University</text>
+    <!-- Arabic Name -->
+    <text x="0" y="60" font-family="'Cairo', 'Simplified Arabic', 'Microsoft Sans Serif', sans-serif" font-size="20" font-weight="bold" fill="#37474f" letter-spacing="1">الجامعة المصرية الروسية</text>
+  </g>
+</svg>

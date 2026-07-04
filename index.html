@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Portal - Egyptian Russian University</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- Google Fonts for crisp typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Login Screen Overlay -->
+  <div id="login-overlay" class="login-wrapper">
+    <div class="login-card">
+      <div class="login-header">
+        <img src="assets/eru_logo.svg" alt="Egyptian Russian University Logo" class="login-logo">
+        <h2>Student Portal Login</h2>
+        <p>Please enter your credentials to access the academic record portal</p>
+      </div>
+      <form id="login-form" onsubmit="handleLogin(event)">
+        <div class="input-group">
+          <label for="login-name">Student Name</label>
+          <input type="text" id="login-name" placeholder="Enter your full name" required autocomplete="off">
+        </div>
+        <div class="input-group">
+          <label for="login-id">Student ID</label>
+          <input type="text" id="login-id" placeholder="Enter student ID" required autocomplete="off">
+        </div>
+        <div class="input-group">
+          <label for="login-password">Password</label>
+          <input type="password" id="login-password" placeholder="Enter password" required>
+        </div>
+        <div id="login-error-msg" class="login-error" style="display: none;">
+          Invalid credentials. Please try again.
+        </div>
+        <button type="submit" class="btn-login">Login</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Sidebar (Left-docked, spans full height of viewport) -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-search">
+      <div class="search-box">
+        <input type="text" value="Go" readonly>
+      </div>
+    </div>
+    <nav class="sidebar-menu">
+      <!-- Category 1: Academic Affairs -->
+      <div class="menu-item" id="menu-academic">
+        <button class="menu-header" onclick="toggleMenu('menu-academic')">
+          <span class="menu-arrow">»</span> Academic Affairs
+        </button>
+        <ul class="submenu">
+          <li><a href="#" onclick="switchView('home'); selectSubmenu(this)">» Register/Add/Drop Course</a></li>
+        </ul>
+      </div>
+
+      <!-- Category 2: My E-Services -->
+      <div class="menu-item" id="menu-eservices">
+        <button class="menu-header" onclick="toggleMenu('menu-eservices')">
+          <span class="menu-arrow">»</span> My E-Services
+        </button>
+        <ul class="submenu">
+          <li><a href="#" onclick="selectSubmenu(this)">» Inbox</a></li>
+          <li><a href="#" onclick="selectSubmenu(this)">» Student Services</a></li>
+          <li><a href="#" onclick="selectSubmenu(this)">» Payment Online</a></li>
+          <li><a href="#" onclick="switchView('semester-results'); selectSubmenu(this)">» semester Result</a></li>
+          <li><a href="#" onclick="selectSubmenu(this)">» Print Voucher</a></li>
+        </ul>
+      </div>
+
+      <!-- Category 3: Reports -->
+      <div class="menu-item" id="menu-reports">
+        <button class="menu-header" onclick="toggleMenu('menu-reports')">
+          <span class="menu-arrow">»</span> Reports
+        </button>
+        <ul class="submenu">
+          <li><a href="#" onclick="selectSubmenu(this)">» Student Registration Form</a></li>
+        </ul>
+      </div>
+
+      <!-- Category 4: My Preferences -->
+      <div class="menu-item" id="menu-preferences">
+        <button class="menu-header" onclick="toggleMenu('menu-preferences')">
+          <span class="menu-arrow">»</span> My Preferences
+        </button>
+        <ul class="submenu">
+          <li><a href="#" onclick="selectSubmenu(this)">» Top Link Preferences</a></li>
+        </ul>
+      </div>
+    </nav>
+  </aside>
+
+  <!-- Main Container (Pushed when sidebar is open) -->
+  <div class="main-container" id="main-container">
+    
+    <!-- Top Header -->
+    <header class="header">
+      <div class="header-logo">
+        <img src="assets/eru_logo.svg" alt="Egyptian Russian University Logo">
+      </div>
+      <div class="header-info">
+        <div class="welcome-text">
+          Welcome <span class="student-name">Shahd Bandary Mohamed Bandary</span> | <span class="view-mode">Student View</span>
+        </div>
+        <div class="department-text">FACULTY OF COMPUTERS &amp; INFORMATION TECHNOLOGY</div>
+        <div class="semester-text">2024/2025 - Spring</div>
+      </div>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+      <div class="navbar-left">
+        <button class="hamburger-btn" id="hamburger-btn" aria-label="Toggle Sidebar">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+        <span class="page-title" id="page-title-text">Home Page</span>
+      </div>
+      
+      <div class="navbar-right">
+        <!-- Quick Action Circular Buttons -->
+        <button class="nav-circle-btn" title="Home" onclick="switchView('home')">
+          <svg viewBox="0 0 24 24" class="nav-icon">
+            <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" fill="currentColor"/>
+          </svg>
+        </button>
+        
+        <button class="nav-circle-btn" title="E-Services">
+          <span class="nav-char-icon">E</span>
+        </button>
+        
+        <button class="nav-circle-btn" title="Preferences">
+          <svg viewBox="0 0 24 24" class="nav-icon">
+            <path d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z" fill="currentColor"/>
+          </svg>
+        </button>
+        
+        <button class="nav-circle-btn" title="Security">
+          <svg viewBox="0 0 24 24" class="nav-icon">
+            <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z" fill="currentColor"/>
+          </svg>
+        </button>
+        
+        <button class="nav-circle-btn" title="Logout">
+          <svg viewBox="0 0 24 24" class="nav-icon">
+            <path d="M10.09 15.59L11.5 17l5-5-5-5-1.41 1.41L12.67 11H3v2h9.67l-2.58 2.59zM19 3H5c-1.11 0-2 .9-2 2v4h2V5h14v14H5v-4H3v4c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z" fill="currentColor"/>
+          </svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="content">
+      
+      <!-- Home Page View -->
+      <div id="home-view" class="portal-view">
+        <!-- Card 1: Student Data -->
+        <section class="card" id="student-data-card">
+          <div class="card-header">
+            <span class="card-dots"></span>
+            <h2>Student Data</h2>
+          </div>
+          <div class="card-body student-info-grid">
+            <!-- Column 1: Personal Info -->
+            <div class="info-column">
+              <div class="info-row">
+                <span class="info-label">Student Name</span>
+                <span class="info-separator">:</span>
+                <span class="info-value name-highlight">Shahd Bandary Mohamed Bandary</span>
+              </div>
+              <div class="info-row">
+                <span class="info-label">College</span>
+                <span class="info-separator">:</span>
+                <span class="info-value">Faculty of Computers &amp; Information Technology</span>
+              </div>
+              <div class="info-row">
+                <span class="info-label">Student Major</span>
+                <span class="info-separator">:</span>
+                <span class="info-value">Cybersecurity</span>
+              </div>
+              <div class="info-row">
+                <span class="info-label">Enrollment Status</span>
+                <span class="info-separator">:</span>
+                <span class="info-value">Enrolled</span>
+              </div>
+            </div>
+            
+            <!-- Column 2: Academic Info -->
+            <div class="info-column">
+              <div class="info-row">
+                <span class="info-label">Student ID</span>
+                <span class="info-separator">:</span>
+                <span class="info-value">235419</span>
+              </div>
+              <div class="info-row">
+                <span class="info-label">Scientific Degree</span>
+                <span class="info-separator">:</span>
+                <span class="info-value">B.Sc.</span>
+              </div>
+              <div class="info-row">
+                <span class="info-label">Level</span>
+                <span class="info-separator">:</span>
+                <span class="info-value">Third Year</span>
+              </div>
+              <div class="info-row">
+                <span class="info-label">Academic Status</span>
+                <span class="info-separator">:</span>
+                <span class="info-value">Very Good</span>
+              </div>
+            </div>
+            
+            <!-- Column 3: Student Image -->
+            <div class="photo-column">
+              <div class="student-photo-wrapper">
+                <img src="assets/student_photo.png" alt="Student Headshot">
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Card 2: Notification -->
+        <section class="card" id="notification-card">
+          <div class="card-header">
+            <span class="card-dots"></span>
+            <h2>Notification</h2>
+          </div>
+          <div class="card-body">
+            <div class="notification-alert">
+              <span class="info-icon">
+                <svg viewBox="0 0 24 24" width="16" height="16">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" fill="currentColor"/>
+                </svg>
+              </span>
+              <span class="notification-text">No notifications are found</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Footer Quick Action / Menu Links -->
+        <section class="quick-links-section">
+          <div class="quick-links-container">
+            <h3 class="quick-links-title">Academic Affairs</h3>
+            <ul class="quick-links-list">
+              <li><a href="#">Register/Add/Drop Course</a></li>
+            </ul>
+          </div>
+          <div class="quick-links-divider"></div>
+        </section>
+      </div>
+
+      <!-- Semester Results View (Initially Hidden) -->
+      <div id="semester-results-view" class="portal-view" style="display: none;">
+        <section class="card results-filter-card">
+          <div class="card-body">
+            <div class="filter-form">
+              <div class="filter-row">
+                <span class="filter-label">Academic Year</span>
+                <select id="academic-year-select" class="filter-select">
+                  <option value="2026/2027">2026/2027</option>
+                  <option value="2025/2026" selected>2025/2026</option>
+                  <option value="2024/2025">2024/2025</option>
+                  <option value="2023/2024">2023/2024</option>
+                  <option value="2022/2023">2022/2023</option>
+                  <option value="2021/2022">2021/2022</option>
+                  <option value="2020/2021">2020/2021</option>
+                  <option value="2019/2020">2019/2020</option>
+                  <option value="2018/2019">2018/2019</option>
+                  <option value="2017/2018">2017/2018</option>
+                  <option value="2016/2017">2016/2017</option>
+                  <option value="2015/2016">2015/2016</option>
+                  <option value="2014/2015">2014/2015</option>
+                  <option value="2013/2014">2013/2014</option>
+                  <option value="2012/2013">2012/2013</option>
+                  <option value="2011/2012">2011/2012</option>
+                  <option value="2010/2011">2010/2011</option>
+                  <option value="2009/2010">2009/2010</option>
+                  <option value="2008/2009">2008/2009</option>
+                  <option value="2007/2008">2007/2008</option>
+                </select>
+              </div>
+              <div class="filter-row">
+                <span class="filter-label">Semester</span>
+                <select id="semester-select" class="filter-select">
+                  <option value="خريف">خريف</option>
+                  <option value="ربيع" selected>ربيع</option>
+                  <option value="صيفى">صيفى</option>
+                  <option value="معادلة">معادلة</option>
+                  <option value="winter">winter</option>
+                </select>
+              </div>
+              <div class="filter-row button-row">
+                <button type="button" class="btn-go" id="btn-go-results">Go</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Warning Alert Banner for Empty Semesters -->
+        <div class="card" id="transcript-warning-container" style="display: none; padding: 15px; border-radius: 4px; border: 1px solid #ffcc80; background-color: #fff8e1; margin-bottom: 20px;">
+          <div class="notification-alert" style="color: #b77b00; justify-content: center; font-weight: bold; font-size: 13px;">
+            <span class="info-icon" style="color: #b77b00; margin-right: 6px;">
+              <svg viewBox="0 0 24 24" width="16" height="16">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" fill="currentColor"/>
+              </svg>
+            </span>
+            <span>عفواً، لا توجد سجلات أكاديمية مسجلة للفصل الدراسي المحدد.</span>
+          </div>
+        </div>
+
+        <!-- Results display container -->
+        <section class="card results-card-container" id="transcript-card-container" style="display: none;">
+          <div class="card-body">
+            
+            <!-- Summary Bar (GPA, CGPA, Passed CH) -->
+            <div class="results-summary-bar">
+              <div class="summary-item">
+                <span class="summary-label">GPA</span>
+                <span class="summary-separator">:</span>
+                <span class="summary-value" id="res-gpa">0.00</span>
+              </div>
+              <div class="summary-item">
+                <span class="summary-label">CGPA</span>
+                <span class="summary-separator">:</span>
+                <span class="summary-value" id="res-cgpa">0.00</span>
+              </div>
+              <div class="summary-item">
+                <span class="summary-label">Passed CH</span>
+                <span class="summary-separator">:</span>
+                <span class="summary-value" id="res-passed-ch">0.00</span>
+              </div>
+            </div>
+
+            <!-- Grades Table -->
+            <div class="results-table-wrapper">
+              <table class="GrdTable" cellspacing="0" cellpadding="2" border="0" id="ctl00_cntphmaster_GridView1" style="background-color:White;width:100%;border-collapse:collapse;">
+                <tbody id="results-table-tbody">
+                  <!-- Dynamically loaded -->
+                </tbody>
+              </table>
+            </div>
+
+          </div>
+        </section>
+      </div>
+
+    </main>
+
+    <!-- Sticky Footer -->
+    <footer class="footer">
+      <div class="footer-left">
+        &copy; Copyright 2023 . <a href="#" class="footer-link">Informatique Education</a> . All Rights Reserved
+      </div>
+      <div class="footer-right">
+        <span class="umis-green">UMIS</span> <span class="umis-text">UNIVERSITY MANAGEMENT INFORMATION SYSTEM</span>
+      </div>
+    </footer>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
