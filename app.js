@@ -76,17 +76,18 @@ const semestersData = {
     ]
   },
 
-  // ── Year 3 · Term 6 (Spring 2024/2025) ────────────────────
+  // ── Year 3 · Term 6 (Spring 2025/2026) ────────────────────
   "3-2": {
-    gpa: "3.20",
-    cgpa: "3.10",
-    passedCH: "90.00",
+    gpa: "3.88",
+    cgpa: "3.45",
+    passedCH: "93.00",
     courses: [
-      { code: "ERU-CYS310", name: "Malware Analysis",           status: "Active", point: "3.30", passFail: "Pass", grade: "B+" },
-      { code: "ERU-CYS315", name: "Cloud Security",             status: "Active", point: "3.70", passFail: "Pass", grade: "A-" },
-      { code: "ERU-CYS314", name: "Digital Forensics",          status: "Active", point: "3.00", passFail: "Pass", grade: "B"  },
-      { code: "ERU-CYS311", name: "Cyber Law",                  status: "Active", point: "3.30", passFail: "Pass", grade: "B+" },
-      { code: "ERU-CYS316", name: "Penetration Testing",        status: "Active", point: "2.70", passFail: "Pass", grade: "B-" }
+      { code: "ERU-CYS301", name: "Advanced Network Security",          status: "Active", point: "4.00", passFail: "Pass", grade: "A+" },
+      { code: "ERU-CYS302", name: "Cryptography",                       status: "Active", point: "3.75", passFail: "Pass", grade: "A"  },
+      { code: "ERU-CYS303", name: "Digital Forensics",                  status: "Active", point: "4.00", passFail: "Pass", grade: "A+" },
+      { code: "ERU-CYS304", name: "Penetration Testing",                status: "Active", point: "3.75", passFail: "Pass", grade: "A"  },
+      { code: "ERU-CYS305", name: "Cloud Security",                      status: "Active", point: "4.00", passFail: "Pass", grade: "A+" },
+      { code: "ERU-CYS306", name: "Risk Management & Compliance",       status: "Active", point: "3.75", passFail: "Pass", grade: "A"  }
     ]
   }
 
