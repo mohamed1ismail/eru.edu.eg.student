@@ -78,8 +78,8 @@ const semestersData = {
 
   // ── Year 3 · Term 6 (Spring 2025/2026) ────────────────────
   "3-2": {
-    gpa: "3.20",
-    cgpa: "3.45",
+    gpa: "3.45",
+    cgpa: "3.20",
     passedCH: "93.00",
     courses: [
       { code: "ERU-CYS301", name: "Advanced Network Security",          status: "Active", point: "4.00", passFail: "Pass", grade: "A+" },
