@@ -78,7 +78,7 @@ const semestersData = {
 
   // ── Year 3 · Term 6 (Spring 2025/2026) ────────────────────
   "3-2": {
-    gpa: "3.88",
+    gpa: "3.20",
     cgpa: "3.45",
     passedCH: "93.00",
     courses: [
