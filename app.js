@@ -8,8 +8,8 @@ const semestersData = {
 
   // ── Year 1 · Term 1 (Autumn 2022/2023) ────────────────────
   "1-1": {
-    gpa: "2.22",
-    cgpa: "3.26",
+    gpa: "2.2",
+    cgpa: "3.2",
     passedCH: "15.00",
     courses: [
       { code: "ERU-CS101", name: "Introduction to Computing", status: "Active", point: "4.00", passFail: "Pass", grade: "A" },
@@ -22,8 +22,8 @@ const semestersData = {
 
   // ── Year 1 · Term 2 (Spring 2022/2023) ────────────────────
   "1-2": {
-    gpa: "2.45",
-    cgpa: "3.16",
+    gpa: "2.4",
+    cgpa: "3.1",
     passedCH: "30.00",
     courses: [
       { code: "ERU-CS103", name: "Data Structures", status: "Active", point: "3.30", passFail: "Pass", grade: "B+" },
@@ -37,7 +37,7 @@ const semestersData = {
   // ── Year 2 · Term 3 (Autumn 2023/2024) ────────────────────
   "2-1": {
     gpa: "2.71",
-    cgpa: "3.11",
+    cgpa: "3.1",
     passedCH: "45.00",
     courses: [
       { code: "ERU-CS201", name: "Algorithms", status: "Active", point: "3.00", passFail: "Pass", grade: "B" },
@@ -50,8 +50,8 @@ const semestersData = {
 
   // ── Year 2 · Term 4 (Spring 2023/2024) ────────────────────
   "2-2": {
-    gpa: "2.76",
-    cgpa: "3.15",
+    gpa: "2.9",
+    cgpa: "3.1",
     passedCH: "60.00",
     courses: [
       { code: "ERU-IT201", name: "Computer Networks 1", status: "Active", point: "3.70", passFail: "Pass", grade: "A-" },
@@ -80,7 +80,7 @@ const semestersData = {
   // ── Year 3 · Term 6 (Spring 2025/2026) ────────────────────
   "3-2": {
     gpa: "3.20",
-    cgpa: "3.29",
+    cgpa: "3.2",
     passedCH: "93.00",
     courses: [
       { code: "ERU-CYS301", name: "Advanced Network Security", status: "Active", point: "4.00", passFail: "Pass", grade: "A+" },
