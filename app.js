@@ -65,7 +65,7 @@ const semestersData = {
   // ── Year 3 · Term 5 (Autumn 2024/2025) ────────────────────
   "3-1": {
     gpa: "3.00",
-    cgpa: "3.16",
+    cgpa: "3.00",
     passedCH: "75.00",
     courses: [
       { code: "ERU-CS307", name: "Network Systems", status: "Active", point: "4.00", passFail: "Pass", grade: "A+" },
@@ -80,7 +80,7 @@ const semestersData = {
   // ── Year 3 · Term 6 (Spring 2025/2026) ────────────────────
   "3-2": {
     gpa: "3.20",
-    cgpa: "3.20",
+    cgpa: "3.29",
     passedCH: "93.00",
     courses: [
       { code: "ERU-CYS301", name: "Advanced Network Security", status: "Active", point: "4.00", passFail: "Pass", grade: "A+" },
