@@ -36,7 +36,7 @@ const semestersData = {
 
   // ── Year 2 · Term 3 (Autumn 2023/2024) ────────────────────
   "2-1": {
-    gpa: "2.71",
+    gpa: "2.7s",
     cgpa: "3.1",
     passedCH: "45.00",
     courses: [
